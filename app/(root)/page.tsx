@@ -1,11 +1,41 @@
-import React from 'react'
+import HeaderBox from "@/components/HeaderBox";
+import RightSidebar from "@/components/RightSidebar";
+import TotalBalanceBox from "@/components/TotalBalanceBox";
+import React from "react";
 
-const page = () => {
+const Home = () => {
+  const loggedIn = {
+    firstName: "Jean Marc",
+    lastName: "Mufind",
+    email: "makayamufind@gmail.com",
+  };
   return (
-    <div>
-      Home Page
-    </div>
-  )
-}
+    <section className="home">
+      <div className="home-content">
+        <header className="home-header">
+          <HeaderBox
+            type="greeting"
+            title="Welcome"
+            user={loggedIn.firstName || "Guest"}
+            subtext="Access and manage your account and transaction effectively"
+          />
 
-export default page
+          <TotalBalanceBox
+            accounts={[]}
+            totalBanks={1}
+            totalCurrentBalance={1350.35}
+          />
+        </header>
+        RECENT TRANSACTION
+      </div>
+
+      <RightSidebar
+        user={loggedIn}
+        transactions={[]}
+        banks={[{ currentBalance: 123.54 }, { currentBalance: 400.90 }]}
+      />
+    </section>
+  );
+};
+
+export default Home;
